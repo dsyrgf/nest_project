@@ -6,7 +6,7 @@ import { PrismaService } from './auth/prisma.service';
 import { PrismaModule } from './prisma/prisma.module';
 
 @Module({
-  imports: [PrismaModule],
+  imports: [AuthModule],
   controllers: [AppController],
   providers: [AppService],
 })
