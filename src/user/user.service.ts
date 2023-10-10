@@ -8,8 +8,8 @@ import { error } from 'console';
 export class UserService {
   constructor(private readonly prismaService: PrismaService){}
   e
-  create(createAuthDto: CreateUserDto) {
-    this.prismaService.auth.create({data: createAuthDto}).then((res)=>{
+  create(createUserDto: CreateUserDto) {
+    this.prismaService.user.create({data: createUserDto}).then((res)=>{
      console.log("usuario cadastrado")
       return res
     }).catch((error)=>{
