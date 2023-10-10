@@ -1,44 +1,44 @@
 import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
-import { AuthService } from './user.service';
-import { CreateAuthDto } from './dto/create-user.dto';
-import { UpdateAuthDto } from './dto/update-user.dto';
+import { UserService as UserService } from './user.service';
+import { CreateUserDto } from './dto/create-user.dto';
+import { UpdateUserDto } from './dto/update-user.dto';
 import { ApiOperation, ApiTags } from '@nestjs/swagger';
 
 
 
-@ApiTags('Auth')
-@Controller('auth')
-export class AuthController {
-  constructor(private readonly authService: AuthService) {}
+@ApiTags('User')
+@Controller('user')
+export class UserController {
+  constructor(private readonly userService: UserService) {}
 
   @ApiOperation({summary: 'Criar novo usuario.'})
   @Post()
-  create(@Body() createAuthDto: CreateAuthDto) {
-    return this.authService.create(createAuthDto);
+  create(@Body() createAuthDto: CreateUserDto) {
+    return this.userService.create(createAuthDto);
   }
 
   @Get()
   @ApiOperation({summary: 'pesquisa todos os usuarios.'})
   findAll() {
-    return this.authService.findAll();
+    return this.userService.findAll();
   }
 
   @Get(':id')
   @ApiOperation({summary: 'pesquisar usuarios por id.'})
   findOne(@Param('id') id: string) {
-    return this.authService.findOne(+id);
+    return this.userService.findOne(+id);
   }
 
   @Patch(':id')
   @ApiOperation({summary: 'alterar dados do usuario.'})
-  update(@Param('id') id: string, @Body() updateAuthDto: UpdateAuthDto) {
-    return this.authService.update(+id, updateAuthDto);
+  update(@Param('id') id: string, @Body() updateAuthDto: UpdateUserDto) {
+    return this.userService.update(+id, updateAuthDto);
   }
 
   @Delete(':id')
   @ApiOperation({summary: 'deletar dados do usuario.'})
   remove(@Param('id') id: string) {
-    return this.authService.remove(+id);
+    return this.userService.remove(+id);
   }
 }
 
