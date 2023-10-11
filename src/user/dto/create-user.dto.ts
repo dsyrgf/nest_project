@@ -15,7 +15,7 @@ export class CreateUserDto {
     @IsString()
     password: string;
 
-    @ApiProperty({example})
+    @ApiProperty({example:'https://img.freepik.com/fotos-gratis/'})
     @IsString()
     picture: string;
 
